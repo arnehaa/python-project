@@ -1,20 +1,29 @@
 import random
 
-number = random.randint(0,100)
-
 finish = False
-attempts = 0
 
-print("Guess a number between 0 and 100")
-
+#Create a new game
 while finish != True:
-    guess = int(input("Enter your guess: "))
-    if guess == number:
-        print(f"You guessed correct in {attempts} attempts")
-        finish = True
-    else:
-        attempts += 1
-        if guess > number:
-            print("Too high")
+
+    number = random.randint(0,100)
+    round = False
+    attempts = 0
+
+    print("Guess a number between 0 and 100")
+
+    #Guess the number
+    while round != True:
+        guess = int(input("Enter your guess: "))
+        if guess == number:
+            print(f"You guessed correct in {attempts} attempts")
+            round = True
+            finish = True if input("Play another round? (y/n)") == 'n' else False
+            if finish:
+                break
         else:
-            print("Too low")
+            attempts += 1
+            if guess > number:
+                print("Too high")
+            else:
+                print("Too low")
+print("Game exit")
